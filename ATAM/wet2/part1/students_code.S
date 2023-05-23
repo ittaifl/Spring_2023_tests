@@ -53,7 +53,7 @@ byteSubstitution:
 		
 		inc %r10
 		cmpq $16, %r10
-		jne sub_loops
+		jne sub_loop
 	
 	movq %rbp,%rsp
 	popq %rbp
@@ -64,7 +64,6 @@ shiftRows:
 	pushq %rbp
 	movq %rsp, %rbp
 	
-	movq
 	xorq %rax, %rax
 	xorq %rbx, %rbx
 	xorq %rcx, %rcx
@@ -196,9 +195,9 @@ cipher:
 		popq %rsi
 		popq %rdi
 		
-		movq 16(%rdi), %rdi
-		decq %rsi
-		cmpq $0, %rsi
+		addq $16, %rdi
+		decq %rdx
+		cmpq $0, %rdx
 		jne cipher_loop
 		
 	
